@@ -15,19 +15,17 @@ Source URL: https://canvas.oregonstate.edu/courses/1946034/modules
 /*
 SETUP
 */
+
+
+require('dotenv').config(); // Load environment variables from .env file
+
+
 var mysql = require('mysql')
 
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: 'classmysql.engr.oregonstate.edu',
-  user: 'cs340_lyp',
-  password: '1250',
-  database: 'cs340_lyp'
-});
-
+const { pool } = require('./database/db-connector');
 var express = require('express');   // We are using the express library for the web server
 var app = express();            // We need to instantiate an express object to interact with the server in our code
-PORT = 4283;                 // Set a port number at the top so it's easy to change in the future
+const PORT = process.env.PORT || 4283;                // Set a port number at the top so it's easy to change in the future
 
 // Handlebars
 const { engine } = require('express-handlebars');
