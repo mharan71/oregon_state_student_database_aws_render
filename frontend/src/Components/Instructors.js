@@ -36,7 +36,7 @@ function Instructors() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/instructor')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/instructor')
       .then(response => response.json())
       .then(data => setInstructorData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -86,7 +86,7 @@ function Instructors() {
       return
     }
     try {
-      const response = await fetch('http://flip4.engr.oregonstate.edu:4283/instructor', {
+      const response = await fetch('https://oregon-state-student-database-aws-render.onrender.com/instructor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ function Instructors() {
       if (response.ok) {
         // Handle success
         console.log('Instructor added successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/instructor') 
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/instructor') 
           .then(response => response.json())
           .then(data => setInstructorData(data))
           .catch(error => console.error('Error fetching data:', error));

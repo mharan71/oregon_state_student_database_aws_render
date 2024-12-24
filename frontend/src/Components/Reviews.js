@@ -27,7 +27,7 @@ function Reviews() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/review')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/review')
       .then(response => response.json())
       .then(data => setReviewData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -36,7 +36,7 @@ function Reviews() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/course')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/course')
       .then(response => response.json())
       .then(data => setCourseData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -116,7 +116,7 @@ function Reviews() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://flip4.engr.oregonstate.edu:4283/review', {
+      const response = await fetch('https://oregon-state-student-database-aws-render.onrender.com/review', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -126,7 +126,7 @@ function Reviews() {
       if (response.ok) {
         // Handle success
         console.log('Review added successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/review')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/review')
           .then(response => response.json())
           .then(data => setReviewData(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -146,7 +146,7 @@ function Reviews() {
     const reviewID = updateFormData.reviewid;
 
     try {
-      const response = await fetch(`http://flip4.engr.oregonstate.edu:4283/review/${reviewID}`, {
+      const response = await fetch(`https://oregon-state-student-database-aws-render.onrender.com/review/${reviewID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -155,7 +155,7 @@ function Reviews() {
       });
       if (response.ok) {
         // Handle success
-        fetch('http://flip4.engr.oregonstate.edu:4283/review')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/review')
           .then(response => response.json())
           .then(data => setReviewData(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -172,12 +172,12 @@ function Reviews() {
     setUpdateForm(false)
     setForm(false)
     try {
-      const response = await fetch(`http://flip4.engr.oregonstate.edu:4283/review/${reviewID}`, {
+      const response = await fetch(`https://oregon-state-student-database-aws-render.onrender.com/review/${reviewID}`, {
         method: 'DELETE',
       });
       if (response.ok) {
         console.log('Review deleted successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/review')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/review')
           .then(response => response.json())
           .then(data => setReviewData(data))
           .catch(error => console.error('Error fetching data:', error));

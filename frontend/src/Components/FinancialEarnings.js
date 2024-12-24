@@ -28,7 +28,7 @@ function FinancialEarnings() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/earning')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/earning')
       .then(response => response.json())
       .then(data => setEarningData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -37,7 +37,7 @@ function FinancialEarnings() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/student')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/student')
       .then(response => response.json())
       .then(data => setStudentData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -100,7 +100,7 @@ function FinancialEarnings() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://flip4.engr.oregonstate.edu:4283/earning', {
+      const response = await fetch('https://oregon-state-student-database-aws-render.onrender.com/earning', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ function FinancialEarnings() {
       if (response.ok) {
         // Handle success
         console.log('Earning added successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/earning')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/earning')
           .then(response => response.json())
           .then(data => setEarningData(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -135,7 +135,7 @@ function FinancialEarnings() {
     const earningID = updateFormData.earningID;
 
     try {
-      const response = await fetch(`http://flip4.engr.oregonstate.edu:4283/earning/${earningID}`, {
+      const response = await fetch(`https://oregon-state-student-database-aws-render.onrender.com/earning/${earningID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -144,7 +144,7 @@ function FinancialEarnings() {
       });
       if (response.ok) {
         // Handle success
-        fetch('http://flip4.engr.oregonstate.edu:4283/earning')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/earning')
           .then(response => response.json())
           .then(data => setEarningData(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -169,12 +169,12 @@ function FinancialEarnings() {
     setForm(false)
 
     try {
-      const response = await fetch(`http://flip4.engr.oregonstate.edu:4283/earning/${earningID}`, {
+      const response = await fetch(`https://oregon-state-student-database-aws-render.onrender.com/earning/${earningID}`, {
         method: 'DELETE',
       });
       if (response.ok) {
         console.log('Earning deleted successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/earning')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/earning')
           .then(response => response.json())
           .then(data => setEarningData(data))
           .catch(error => console.error('Error fetching data:', error));

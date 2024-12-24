@@ -21,7 +21,7 @@ function Enrollments() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/enrollment')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/enrollment')
       .then(response => response.json())
       .then(data => setEnrollmentData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -30,7 +30,7 @@ function Enrollments() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/student')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/student')
       .then(response => response.json())
       .then(data => setStudentData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -39,7 +39,7 @@ function Enrollments() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/course')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/course')
       .then(response => response.json())
       .then(data => setCourseData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -74,7 +74,7 @@ function Enrollments() {
     }
 
     try {
-      const response = await fetch('http://flip4.engr.oregonstate.edu:4283/enrollment', {
+      const response = await fetch('https://oregon-state-student-database-aws-render.onrender.com/enrollment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ function Enrollments() {
       if (response.ok) {
         // Handle success
         console.log('Enrollment added successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/enrollment')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/enrollment')
           .then(response => response.json())
           .then(data => setEnrollmentData(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -136,12 +136,12 @@ function Enrollments() {
   // The delete operation for the following enrollment table
   const deleteEnrollment = async (enrollmentID) => {
     try {
-      const response = await fetch(`http://flip4.engr.oregonstate.edu:4283/enrollment/${enrollmentID}`, {
+      const response = await fetch(`https://oregon-state-student-database-aws-render.onrender.com/enrollment/${enrollmentID}`, {
         method: 'DELETE',
       });
       if (response.ok) {
         console.log('Enrollment deleted successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/enrollment')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/enrollment')
           .then(response => response.json())
           .then(data => setEnrollmentData(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -158,7 +158,7 @@ function Enrollments() {
     const enrollmentID = updateFormData.enrollmentid;
 
     try {
-      const response = await fetch(`http://flip4.engr.oregonstate.edu:4283/enrollment/${enrollmentID}`, {
+      const response = await fetch(`https://oregon-state-student-database-aws-render.onrender.com/enrollment/${enrollmentID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -167,7 +167,7 @@ function Enrollments() {
       });
       if (response.ok) {
         // Handle success
-        fetch('http://flip4.engr.oregonstate.edu:4283/enrollment')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/enrollment')
           .then(response => response.json())
           .then(data => setEnrollmentData(data))
           .catch(error => console.error('Error fetching data:', error));

@@ -26,7 +26,7 @@ function Companies() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/company')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/company')
       .then(response => response.json())
       .then(data => setCompanyData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -68,7 +68,7 @@ function Companies() {
       return
     }
     try {
-      const response = await fetch('http://flip4.engr.oregonstate.edu:4283/company', {
+      const response = await fetch('https://oregon-state-student-database-aws-render.onrender.com/company', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ function Companies() {
       if (response.ok) {
         // Handle success
         console.log('Company added successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/company')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/company')
           .then(response => response.json())
           .then(data => setCompanyData(data))
           .catch(error => console.error('Error fetching data:', error));

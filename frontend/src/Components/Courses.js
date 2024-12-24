@@ -28,7 +28,7 @@ function Courses() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/course')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/course')
       .then(response => response.json())
       .then(data => setCourseData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -37,7 +37,7 @@ function Courses() {
   // Side effect for loading component after each render
   // Data is loaded once on load 
   useEffect(() => {
-    fetch('http://flip4.engr.oregonstate.edu:4283/instructor')
+    fetch('https://oregon-state-student-database-aws-render.onrender.com/instructor')
       .then(response => response.json())
       .then(data => setInstructorData(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -91,7 +91,7 @@ function Courses() {
       return
     }
     try {
-      const response = await fetch('http://flip4.engr.oregonstate.edu:4283/course', {
+      const response = await fetch('https://oregon-state-student-database-aws-render.onrender.com/course', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ function Courses() {
       if (response.ok) {
         // Handle success
         console.log('Course added successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/course')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/course')
           .then(response => response.json())
           .then(data => setCourseData(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -113,12 +113,12 @@ function Courses() {
 
   const deleteCourse = async (courseID) => {
     try {
-      const response = await fetch(`http://flip4.engr.oregonstate.edu:4283/course/${courseID}`, {
+      const response = await fetch(`https://oregon-state-student-database-aws-render.onrender.com/course/${courseID}`, {
         method: 'DELETE',
       });
       if (response.ok) {
         console.log('Course deleted successfully');
-        fetch('http://flip4.engr.oregonstate.edu:4283/course')
+        fetch('https://oregon-state-student-database-aws-render.onrender.com/course')
           .then(response => response.json())
           .then(data => setCourseData(data))
           .catch(error => console.error('Error fetching data:', error));
