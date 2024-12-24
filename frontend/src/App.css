@@ -1,0 +1,110 @@
+.App {
+  text-align: center;
+}
+
+header {
+  background-color: var(--dark-pink);
+  color: var(--purple);
+  margin: 0 auto;
+  padding: 1% 2% 1% 2%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 5px solid var(--light-purple-transparent);
+}
+
+/*Navbar*/
+.navbar-styles {
+  color: whitesmoke;
+}
+.black-navbar {
+  background-color: #000;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: 0px 10px 10px 0px rgba(9, 5, 29, 0.171);
+  backdrop-filter: blur(15px);
+}
+
+.navbar-brand {
+  color: whitesmoke !important;
+  font-size: 1.9rem;
+}
+
+.nav-item {
+  margin: 5px 20px;
+}
+
+.nav-link {
+  font-weight: 200;
+  transition: all 0.3s ease-out 0s;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-link::after {
+  content: "";
+  position: relative;
+  display: block;
+  height: 6px;
+  width: 0;
+  border-radius: 12px;
+  background: whitesmoke;
+  bottom: 1px;
+  left: 0;
+  transition: all 0.4s ease-out 0s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+
+
+/* Homepage */
+.homepage-basic-info {
+  background-color: #D73F09;
+  position: relative;
+  padding-bottom: 35px;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+}
+
+.homepage-content {
+  padding: 8rem 0 5rem;
+  color: whitesmoke;
+  text-align: left;
+}
+
+.homepage-introduction {
+  color: whitesmoke;
+  font-size: px;
+  background-color: #252525;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+
+
+/* All forms */
+.basic-info {
+  position: relative;
+  padding-bottom: 35px;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  background-color:#D73F09;
+}
+
+.content {
+  padding: 8rem 0 5rem;
+  color: whitesmoke;
+  text-align: left;
+}
+
+.form-box {
+  border-radius: 5px;
+  border-color: black;
+  border-style: solid;
+  font-size: 18px;
+  padding: 10px 40px;
+  background-color: #252525;
+}
+
+.btn {
+  margin: 0px 5px;
+}
