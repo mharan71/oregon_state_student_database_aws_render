@@ -18,14 +18,20 @@ SETUP
 
 
 require('dotenv').config(); // Load environment variables from .env file
-
-
-var mysql = require('mysql')
-
-const { pool } = require('./database/db-connector');
+var mysql = require('mysql');
 var express = require('express');   // We are using the express library for the web server
 var app = express();            // We need to instantiate an express object to interact with the server in our code
-const PORT = process.env.PORT || 4283;                // Set a port number at the top so it's easy to change in the future
+const PORT = process.env.PORT || 4283; // Set a port number at the top so it's easy to change in the future
+
+// Set up database connection pool
+const pool = mysql.createPool({
+  connectionLimit: 10,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
+});
 
 // Handlebars
 const { engine } = require('express-handlebars');
@@ -33,13 +39,13 @@ var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({ extname: ".hbs" }));  // Create an instance of the handlebars engine to process templates
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Cors to read data
-var cors = require('cors')
-app.use(cors())
+var cors = require('cors');
+app.use(cors());
 
 /*
 ROUTES
@@ -114,18 +120,6 @@ app.get('/earning', (req, res) => {
   });
 });
 
-// Gets company data
-app.get('/company', (req, res) => {
-  const query = 'SELECT * FROM Companies';
-  pool.query(query, (err, results) => {
-    if (err) {
-      console.error('Error executing query:', err);
-      res.status(500).send('Error fetching data');
-      return;
-    }
-    res.json(results);
-  });
-});
 
 // Get Instructor Data
 app.get('/instructor', (req, res) => {
