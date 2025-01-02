@@ -33,6 +33,9 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT || 3306,
 });
 
+console.log("DB_NAME:", process.env.DB_NAME);
+
+
 // Handlebars
 const { engine } = require('express-handlebars');
 var exphbs = require('express-handlebars');     // Import express-handlebars
